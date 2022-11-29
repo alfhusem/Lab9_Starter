@@ -101,7 +101,108 @@
     let errorBtns = Array.from(document.querySelectorAll('#error-btns > button'));
 
     // Start your code here
-    // You may move this JS to another file if you wish
+    // console log
+    errorBtns[0].addEventListener('click', function() {
+        let output = document.querySelector('output');
+        let firstNum = document.querySelector('#first-num').value;
+        let secondNum = document.querySelector('#second-num').value;
+        let operator = document.querySelector('#operator').value;
+        if(firstNum == '' || secondNum == ''){
+            console.log(`An input is missing for the ${operator} operation`)
+        } else{
+            console.log(`Computing ${operator} operation on ${firstNum} and ${secondNum}`);
+        }
+    });
+
+    // console error
+    errorBtns[1].addEventListener('click', function() {
+        document.querySelector('#first-num').value = 10;
+        document.querySelector('#second-num').value = 0;
+        let secondNum = document.querySelector('#second-num').value;
+        if(secondNum == 0){
+          throw new CannotDivideByZero();
+        }
+        console.error("ERROR");
+    })
+
+    // console count
+    errorBtns[2].addEventListener('click', function() {
+        console.count('count');
+    })
+
+    // console warn
+    errorBtns[3].addEventListener('click', function() {
+        console.warn("This is a waring...");
+    })
+
+    // console assert
+    errorBtns[4].addEventListener('click', function() {
+        const a = "I Can't Believe It's Not Butter!";
+        const b = "butter";
+        const result = "Not the same";
+        console.assert(a == b, {a, b, result});
+    })
+
+    // console clear
+    errorBtns[5].addEventListener('click', function() {
+        console.clear();
+    })
+
+    // console dir
+    errorBtns[6].addEventListener('click', function() {
+        console.dir(errorBtns);
+    })
+
+    // console dirxml
+    errorBtns[7].addEventListener('click', function() {
+        console.dirxml(errorBtns);
+    })
+
+    // console groupstart
+    const label = 'Grouping Messages Together'
+    errorBtns[8].addEventListener('click', function() {
+        console.group(label);
+    })
+
+    // console groupend
+    errorBtns[9].addEventListener('click', function() {
+        console.groupEnd(label);
+    })
+
+    // console table
+    errorBtns[10].addEventListener('click', function() {
+        console.table(errorBtns);
+    })
+
+    // start time
+    errorBtns[11].addEventListener('click', function() {
+        console.time();
+        console.info('Stopwatch time has started.');
+    })
+
+    // endtime
+    errorBtns[12].addEventListener('click', function() {
+        console.timeEnd();
+    })
+
+    // trace
+    errorBtns[13].addEventListener('click', function() {
+        const deep = () => { deeper(); };
+        const deeper = () => { deepest(); };
+        const deepest = () => { console.trace(); };
+        add();
+    })
+
+    // trigger a global error ...
+    errorBtns[14].addEventListener('click', function(){
+        try{
+            let problem = errorBtns[0.2].DOCUMENT_NODE;
+            console.log(problem);
+        }
+        catch (e) {
+            console.error(`Something is wrong here: ${e}`)
+        }
+    })
   </script>
 </body>
 
